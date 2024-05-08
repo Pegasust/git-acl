@@ -1,0 +1,10 @@
+- name: Push ACL configuration
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: Apply generated ACL
+      nokia.srlinux.config:
+        update:
+          - path: /acl
+            value: "{{lookup('file', './srl.srl_acl') | from_json}}"
+      # register: set_response
