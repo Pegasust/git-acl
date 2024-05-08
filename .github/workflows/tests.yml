@@ -42,7 +42,9 @@ jobs:
       run: make deploy-clab-ci
 
     - name: see generated hosts.yml
-      run: cat hosts.yml
+      run: |
+        mv ansible-inventory.yml hosts.yml
+        cat hosts.yml
 
     - name: push to current environment
       run: make push-prod
