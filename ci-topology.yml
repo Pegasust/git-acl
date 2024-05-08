@@ -1,6 +1,6 @@
 # https://github.com/napalm-automation-community/napalm-srlinux/blob/5cf6abd2f1b8bed946ce3f43dd72cfc5563cea53/.clab/ci-topology.yml
 ---
-name: napalm-ci_cd
+name: acl-git
 
 topology:
   kinds:
