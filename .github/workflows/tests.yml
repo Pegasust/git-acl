@@ -24,7 +24,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install aerleon
-        apt-get install jq
+        sudo apt-get install -y jq
 
     - name: install latest clab
       run: bash -c "$(curl -sL https://get.containerlab.dev)" # -- -v 0.36.1
