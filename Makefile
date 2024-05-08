@@ -16,13 +16,5 @@ destroy-clab-ci: ## Destroy "ci" test topology
 	sudo clab destroy -t ci-topology.yml --cleanup
 
 run-tests: $(TESTS) ## Run all CI tests under test/ci
-	echo "done"
+	gnmic -- --address clab-srl-srl --username admin --password 'NokiaSrl1!' get --path '/acl' --skip-verify -e JSON_IETF
 
-dist: ## This creates a ./dist directory with wheel package
-	python3 -m pip install --upgrade build
-	python3 -m build
-
-release: dist ## release to PyPi
-	python3 -m pip install --upgrade twine
-	# --repository testpypi
-	python3 -m twine upload dist/*
