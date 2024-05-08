@@ -1,6 +1,6 @@
 [
   {
-    "ipv4-filter": {
+    "acl-filter": {
       "_annotate": "$Id:$ $Date:$ $Revision:$",
       "description": "Denies all traffic to internal IPs except established tcp replies._Also denies access to certain public allocations._Ideal for some internal lab/testing types of subnets that are_not well trusted, but allowing internal users to access._Apply to ingress in",
       "entry": [
@@ -210,7 +210,8 @@
         }
       ],
       "name": "customer_acl",
-      "statistics-per-entry": true
+      "statistics-per-entry": true,
+      "type": "ipv4"
     }
   }
 ]
