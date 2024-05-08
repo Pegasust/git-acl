@@ -6,6 +6,6 @@
       nokia.srlinux.config:
         # NOTE: this should be safe-ish
         update:
-          - path: /acl/
+          - path: /acl
             value: "{{lookup('file', '../srl.srl_acl') | from_json}}"
       # register: set_response
