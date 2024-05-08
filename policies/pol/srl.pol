@@ -6,7 +6,7 @@ header {
   comment:: "not well trusted, but allowing internal users to access."
 
   comment:: "Apply to ingress interface (to filter traffic coming from lab)"
-  target:: nokiasrl allowtointernet
+  target:: nokiasrl allowtointernet stats
 }
 
 term accept-dhcp {

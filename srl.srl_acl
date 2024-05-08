@@ -209,7 +209,8 @@
           "sequence-id": 70
         }
       ],
-      "name": "allowtointernet"
+      "name": "allowtointernet",
+      "statistics-per-entry": true
     }
   }
 ]
