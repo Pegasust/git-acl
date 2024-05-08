@@ -1,0 +1,8 @@
+networks:
+  customer-A:
+    values:
+    - address: 23.27.240.0/24
+      comment: "Server Linux#4441"
+
+    - address: 23.27.242.0/24
+      comment: "Server MacStadium#4104"

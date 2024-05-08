@@ -200,13 +200,39 @@
           "sequence-id": 65
         },
         {
+          "_annotate_description": "Must allow customer A's servers",
+          "action": {
+            "accept": {}
+          },
+          "description": "allow-customer-A",
+          "match": {
+            "destination-ip": {
+              "prefix": "23.27.240.0/24"
+            }
+          },
+          "sequence-id": 70
+        },
+        {
+          "_annotate_description": "Must allow customer A's servers",
+          "action": {
+            "accept": {}
+          },
+          "description": "allow-customer-A",
+          "match": {
+            "destination-ip": {
+              "prefix": "23.27.242.0/24"
+            }
+          },
+          "sequence-id": 75
+        },
+        {
           "_annotate_description": "Allow what's left.",
           "action": {
             "accept": {}
           },
           "description": "default-permit",
           "match": {},
-          "sequence-id": 70
+          "sequence-id": 80
         }
       ],
       "name": "customer_acl",

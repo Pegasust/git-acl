@@ -45,6 +45,12 @@ term deny-to-specific_hosts {
   logging:: true
 }
 
+term allow-customer-A {
+  comment:: "Must allow customer A's servers"
+  destination-address:: customer-A
+  action:: accept
+}
+
 term default-permit {
   comment:: "Allow what's left."
   action:: accept
