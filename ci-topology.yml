@@ -5,7 +5,7 @@ name: acl-git
 topology:
   kinds:
     srl:
-      image: ghcr.io/nokia/srlinux:latest # Could pick specific version
+      image: ghcr.io/nokia/srlinux:23.10.3-74 # Could pick specific version
   nodes:
     # TODO multiple node flavors like ixrd2, ixrd3, ixrd2l, etc.
     srl:
