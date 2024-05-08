@@ -41,6 +41,7 @@ jobs:
     - name: start clab ci topo
       run: |
         make deploy-clab-ci
+        cp clab-acl-git/ansible-inventory.yml ./hosts.yml
         ls
 
     - name: see generated hosts.yml
