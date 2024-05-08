@@ -16,5 +16,7 @@ destroy-clab-ci: ## Destroy "ci" test topology
 	sudo clab destroy -t ci-topology.yml --cleanup
 
 run-tests: $(TESTS) ## Run all CI tests under test/ci
-	gnmic -- --address clab-srl-srl --username admin --password 'NokiaSrl1!' get --path '/acl' --skip-verify -e JSON_IETF
+	gnmic --address clab-srl-srl --username admin --password 'NokiaSrl1!' get --path '/acl' --skip-verify -e JSON_IETF
 
+push-prod:
+	# ...

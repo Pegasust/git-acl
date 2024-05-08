@@ -34,3 +34,27 @@ get
 ```sh
 nix github:nixos/nixpkgs/nixos-unstable#gnmic -- --address clab-srl-generic-leaf4 --username admin --password 'NokiaSrl1!' get --path '/acl' --skip-verify -e JSON_IETF
 ```
+
+## Generate identity keys
+
+This is accordingly to our practice of using GitHub env for identities, and
+`sops`
+
+```sh
+# SSH key
+ssh-keygen -t ed25519 -f gh-prod
+# generates github-prod-virt-acl{,.pub}
+SSH_PRIV="$(cat gh-prod)"
+SSH_PUB="$(cat gh-prod.pub)"
+
+# Age counterpart
+# use https://github.com/Mic92/ssh-to-age/blob/main/README.md
+
+# Generate age private
+AGE_PRIV="$(nix run nixpkgs\#ssh-to-age -- --private-key -i gh-prod)"
+# Generate age pubkey
+AGE_PUB="$(nix run nixpkgs\#ssh-to-age -- -i gh-prod.pub)"
+```
+
+Decrypt
+
