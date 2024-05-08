@@ -41,6 +41,9 @@ jobs:
     - name: start clab ci topo
       run: make deploy-clab-ci
 
+    - name: see generated hosts.yml
+      run: cat hosts.yml
+
     - name: push to current environment
       run: make push-prod
 
