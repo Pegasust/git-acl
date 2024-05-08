@@ -209,7 +209,7 @@
           "sequence-id": 70
         }
       ],
-      "name": "allowtointernet",
+      "name": "customer_acl",
       "statistics-per-entry": true
     }
   }

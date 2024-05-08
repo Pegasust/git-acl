@@ -15,4 +15,22 @@ ssh dev1
 
 gnmic --address clab-srl-generic-leaf4 --username admin --password 'NokiaSrl1!' set --update-path '/acl' --update-file ~/tmp/srl.srl_acl --skip-verify -e JSON_IETF
 
+
+nix github:nixos/nixpkgs/nixos-unstable#gnmic -- --address clab-srl-generic-leaf4 --username admin --password 'NokiaSrl1!' set --update-path '/acl' --update-file ~/tmp/srl.srl_acl --skip-verify -e JSON_IETF
+
+ssh admin@clab-srl-generic-leaf4
+```
+
+
+## gnmic via nix
+
+set-update
+```sh
+nix github:nixos/nixpkgs/nixos-unstable#gnmic -- --address clab-srl-generic-leaf4 --username admin --password 'NokiaSrl1!' set --update-path '/acl' --update-file ~/tmp/srl.srl_acl --skip-verify -e JSON_IETF
+```
+
+get
+
+```sh
+nix github:nixos/nixpkgs/nixos-unstable#gnmic -- --address clab-srl-generic-leaf4 --username admin --password 'NokiaSrl1!' get --path '/acl' --skip-verify -e JSON_IETF
 ```
