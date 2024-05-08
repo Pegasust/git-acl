@@ -1,0 +1,216 @@
+[
+  {
+    "ipv4-filter": {
+      "_annotate": "$Id:$ $Date:$ $Revision:$",
+      "description": "Denies all traffic to internal IPs except established tcp replies._Also denies access to certain public allocations._Ideal for some internal lab/testing types of subnets that are_not well trusted, but allowing internal users to access._Apply to ingress in",
+      "entry": [
+        {
+          "_annotate_description": "Optional - allow forwarding of DHCP requests.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-dhcp",
+          "match": {
+            "destination-port": {
+              "range": {
+                "end": 68,
+                "start": 67
+              }
+            },
+            "protocol": 17
+          },
+          "sequence-id": 5
+        },
+        {
+          "_annotate_description": "Allow name resolution using honestdns.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-to-honestdns",
+          "match": {
+            "destination-ip": {
+              "prefix": "8.8.4.4/32"
+            },
+            "destination-port": {
+              "value": 53
+            },
+            "protocol": 17
+          },
+          "sequence-id": 10
+        },
+        {
+          "_annotate_description": "Allow name resolution using honestdns.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-to-honestdns",
+          "match": {
+            "destination-ip": {
+              "prefix": "8.8.8.8/32"
+            },
+            "destination-port": {
+              "value": 53
+            },
+            "protocol": 17
+          },
+          "sequence-id": 15
+        },
+        {
+          "_annotate_description": "Allow tcp replies to internal hosts.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-tcp-replies",
+          "match": {
+            "destination-ip": {
+              "prefix": "10.0.0.0/8"
+            },
+            "protocol": 6,
+            "tcp-flags": "ack|rst"
+          },
+          "sequence-id": 20
+        },
+        {
+          "_annotate_description": "Allow tcp replies to internal hosts.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-tcp-replies",
+          "match": {
+            "destination-ip": {
+              "prefix": "172.16.0.0/12"
+            },
+            "protocol": 6,
+            "tcp-flags": "ack|rst"
+          },
+          "sequence-id": 25
+        },
+        {
+          "_annotate_description": "Allow tcp replies to internal hosts.",
+          "action": {
+            "accept": {}
+          },
+          "description": "accept-tcp-replies",
+          "match": {
+            "destination-ip": {
+              "prefix": "192.168.0.0/16"
+            },
+            "protocol": 6,
+            "tcp-flags": "ack|rst"
+          },
+          "sequence-id": 30
+        },
+        {
+          "_annotate_description": "Deny access to rfc1918/internal.",
+          "action": {
+            "drop": {}
+          },
+          "description": "deny-to-internal",
+          "match": {
+            "destination-ip": {
+              "prefix": "10.0.0.0/8"
+            }
+          },
+          "sequence-id": 35
+        },
+        {
+          "_annotate_description": "Deny access to rfc1918/internal.",
+          "action": {
+            "drop": {}
+          },
+          "description": "deny-to-internal",
+          "match": {
+            "destination-ip": {
+              "prefix": "172.16.0.0/12"
+            }
+          },
+          "sequence-id": 40
+        },
+        {
+          "_annotate_description": "Deny access to rfc1918/internal.",
+          "action": {
+            "drop": {}
+          },
+          "description": "deny-to-internal",
+          "match": {
+            "destination-ip": {
+              "prefix": "192.168.0.0/16"
+            }
+          },
+          "sequence-id": 45
+        },
+        {
+          "_annotate_description": "Deny access to specified public.",
+          "action": {
+            "drop": {
+              "log": true
+            }
+          },
+          "description": "deny-to-specific_hosts",
+          "match": {
+            "destination-ip": {
+              "prefix": "200.1.1.1/32"
+            }
+          },
+          "sequence-id": 50
+        },
+        {
+          "_annotate_description": "Deny access to specified public.",
+          "action": {
+            "drop": {
+              "log": true
+            }
+          },
+          "description": "deny-to-specific_hosts",
+          "match": {
+            "destination-ip": {
+              "prefix": "200.1.1.2/32"
+            }
+          },
+          "sequence-id": 55
+        },
+        {
+          "_annotate_description": "Deny access to specified public.",
+          "action": {
+            "drop": {
+              "log": true
+            }
+          },
+          "description": "deny-to-specific_hosts",
+          "match": {
+            "destination-ip": {
+              "prefix": "200.1.1.4/32"
+            }
+          },
+          "sequence-id": 60
+        },
+        {
+          "_annotate_description": "Deny access to specified public.",
+          "action": {
+            "drop": {
+              "log": true
+            }
+          },
+          "description": "deny-to-specific_hosts",
+          "match": {
+            "destination-ip": {
+              "prefix": "200.1.1.5/32"
+            }
+          },
+          "sequence-id": 65
+        },
+        {
+          "_annotate_description": "Allow what's left.",
+          "action": {
+            "accept": {}
+          },
+          "description": "default-permit",
+          "match": {},
+          "sequence-id": 70
+        }
+      ],
+      "name": "allowtointernet"
+    }
+  }
+]
+
